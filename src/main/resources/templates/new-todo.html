@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmosDB | Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fbfbfb;
+        }
+
+        .form-column {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input, textarea {
+            padding: 5px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            align-items: stretch;
+            outline: none;
+        }
+        label {
+            font-weight: bold;
+            margin-left: 3px;
+            margin-bottom: 3px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+        }
+
+        button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Add new task</h1>
+        <hr>
+        <form action="#" method="post" th:action="@{/new-todo}" th:object="${newTodo}">
+            <div class="form-column">
+                <label>Task name</label>
+                <input type="text" th:field="*{name}" /><br/>
+            </div>
+            <div class="form-column">
+                <label>Description</label>
+                <textarea type="text" th:field="*{description}" rows="5"/><br/>
+            </div>
+
+            <button type="submit"> + Create</button>    
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmosDB | Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fbfbfb;
+        }
+
+        .flx-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: .3rem;
+        }
+        
+        .todo-card {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .todo-card h4, .todo-card p {
+            margin: 0;
+            padding: 2px 0;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>TODO list</h1>
+
+        <hr>
+
+        <section th:if="${not #lists.isEmpty(todos)}">
+            <div th:each="todo: ${todos}" class="todo-card">
+                <div class="flx-row">
+                    <h4 th:text=" ${todo.name}"></h4>
+                    <span th:text=" '( ' + ${todo.completed} + ' )' "></span>
+                </div>
+                <p th:text="${todo.description}"></p>
+            </div>
+        </section>
+    
+        <section th:if="${#lists.isEmpty(todos)}">
+            <h3>No TODOs found!</h3>
+        </section>
+
+        <a href="/new-todo" > + create new task </a>
+        <hr>
+    </div>
+</body>
+</html>

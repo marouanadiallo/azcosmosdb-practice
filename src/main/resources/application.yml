@@ -1,0 +1,11 @@
+spring:
+    application:
+        name: cosmosdb-pr
+
+# CosmosDB configuration
+    cloud:
+        azure:
+            cosmos:
+                endpoint: ${COSMOS_DB_ENDPOINT}
+                key: ${COSMOS_DB_KEY}
+                database: TodoList
